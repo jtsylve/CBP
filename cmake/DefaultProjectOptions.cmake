@@ -8,4 +8,11 @@ if(PROJECT_IS_TOP_LEVEL)
         include(EnableCompilerCache)
         enableCompilerCache()
     endif()
-endif()
+
+    option(${PROJECT_NAME_UPPER}_ENABLE_IPO "Interprocedural Optimization Support" ON)
+    if (${PROJECT_NAME_UPPER}_ENABLE_IPO)
+        include(EnableIPO)
+        enableIPO()
+    endif()
+
+endif(PROJECT_IS_TOP_LEVEL)
