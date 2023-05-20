@@ -122,6 +122,8 @@ function(enableCompilerCache)
 
         set(CMAKE_VS_GLOBALS "${CMAKE_VS_GLOBALS}" PARENT_SCOPE)
     endif()
+
+    message(STATUS "CCache enabled")
 endfunction()
  
  
