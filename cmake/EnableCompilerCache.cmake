@@ -1,3 +1,8 @@
+
+# SPDX-FileCopyrightText: © 2023 Joe T. Sylve, Ph.D. <joe.sylve@gmail.com>
+#
+# SPDX-License-Identifier: Apache-2.0
+
 #
 # Adapted with permission from Craig Scott's book:
 #   "Professional CMake: A Practical Guide"
