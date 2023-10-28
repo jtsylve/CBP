@@ -3,7 +3,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.25)
 
 function(enableClangTidy)
     message(STATUS "Checking for clang-tidy")
@@ -31,10 +31,20 @@ function(enableClangTidy)
 
     message(STATUS "Found clang-tidy: ${CLANG_TIDY_EXECUTABLE}")
 
+    set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
+
     # Enable clang-tidy for all targets
     foreach(lang IN ITEMS C CXX OBJC OBJCXX)
-        set(CMAKE_${lang}_CLANG_TIDY ${CLANG_TIDY_EXECUTABLE} PARENT_SCOPE)
+        set(CMAKE_${lang}_CLANG_TIDY ${CLANG_TIDY_EXECUTABLE} -p ${CMAKE_BINARY_DIR} PARENT_SCOPE)
     endforeach()
+
+    find_program(RUN_CLANG_TIDY_EXECUTABLE run-clang-tidy)
+    if (RUN_CLANG_TIDY_EXECUTABLE)
+      add_custom_target(run-clang-tidy
+          COMMAND ${RUN_CLANG_TIDY_EXECUTABLE}
+              -clang-tidy-binary ${CLANG_TIDY_EXECUTABLE}
+              -p ${CMAKE_BINARY_DIR})
+    endif()
     
     message(STATUS "clang-tidy support enabled")
 endfunction()
