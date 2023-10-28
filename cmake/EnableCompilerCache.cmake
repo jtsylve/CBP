@@ -17,7 +17,7 @@ function(enableCompilerCache)
     # Locate ccache
     find_program(CCACHE_EXECUTABLE ccache)
     if(NOT CCACHE_EXECUTABLE)
-        message(WARNING "ccache not found")
+        message(NOTICE "ccache not found")
         return()
     endif()
 

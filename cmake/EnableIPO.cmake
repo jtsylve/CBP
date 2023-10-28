@@ -13,7 +13,7 @@ function(enableIPO)
     # Check if IPO is supported
     check_ipo_supported(RESULT IPO_SUPPORTED OUTPUT IPO_SUPPORT_OUTPUT)
     if(NOT IPO_SUPPORTED)
-        message(WARNING "IPO is not supported: ${IPO_SUPPORT_OUTPUT}")
+        message(NOTICE "IPO is not supported: ${IPO_SUPPORT_OUTPUT}")
         return()
     endif()
 

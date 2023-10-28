@@ -25,7 +25,7 @@ function(enableClangTidy)
         PATHS ${HOMEBREW_LLVM_BIN_PATH})
         
     if(NOT CLANG_TIDY_EXECUTABLE)
-        message(WARNING "clang-tidy not found")
+        message(NOTICE "clang-tidy not found")
         return()
     endif()
 
